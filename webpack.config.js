@@ -1,6 +1,10 @@
 const path = require('path');
 
 module.exports = {
+  watch: true,
+  watchOptions: {
+    ignored: /node_modules/,
+  },
   entry: './src/index.js',
   output: {
     filename: 'bundle.js',
@@ -11,7 +15,11 @@ module.exports = {
       {
         test: /\.css$/i,
         use: ['style-loader', 'css-loader']
-      }
+      },
+      {
+        test: /\.(png|svg|jpg|jpeg|gif)$/i,
+        type: 'asset/resource',
+      },
     ]
-  }
+  },
 };
